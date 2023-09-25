@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공유 3103 김근영</title>
+    <script>
+        function addItem(){
+            var newItem = document.createElement("div");
+            newItem.innerHTML = document.getElementById("A").value;
+            document.getElementById("list").appendChild(newItem);
+            saveList();
+            newItem.onclick = removeItem;
+            document.getElementById("list").appenchild(newItem);
+            saveList();
+        }
+        function removeItem(){
+            document.getElementById("list").removeChild(this);
+            saveList();
+        }
+        function saveList(){
+            localStorage.storedList = document.getElementById("list").innerHTML;
+        }
+        function loadList(){
+            document.getElementById("list").innerHTML = localStorage.storedList;
+            for(var i = 0; i< list.children.length; i++){
+                list.children[i].onclick = removeItem;
+            }
+        }
+
+
+    </script>
+</head>
+
+<body style="background-color: pink;">
+   
+    <center><h1>My page에 오신 것을 환영합니다!</h1>
+    
+    <h5>방명록을 입력해주세요</h5></center><br/>
+    <center>
+
+    <div style="background-color:white; width : 500px;
+     height : 700px; border-radius : 50px;">
+     <input type ="text" id= A value= "" style= "width : 350px; height : 200px;
+     margin : 50px;">
+
+     <input type="button" value = "입력" onclick="addItem();"/>
+     <div id ="list"></div>
+
+     <script>
+        if(localStorage.storedList){
+            loadList();
+        }
+     </script>
+
+    </div>
+
+</center>
+</body>
+</html>
